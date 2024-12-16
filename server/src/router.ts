@@ -19,9 +19,14 @@ router.post("/api/items", itemActions.add);
 
 import programs from "./modules/api/programs";
 import sayActions from "./modules/say/sayActions";
+import categoryActions from "./modules/category/categoryActions";
 
 router.get("/", sayActions.sayWelcome);
 router.get("/api/programs", programs.browse);
++router.get("/api/programs/:id", programs.read);
+router.get("/api/categories", categoryActions.categorie);
++router.get("/api/categories/:id", categoryActions.read);
+
 /* ************************************************************************* */
 
 export default router;
