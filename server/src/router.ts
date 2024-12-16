@@ -18,8 +18,8 @@ router.post("/api/items", itemActions.add);
 // Declaration of a "Welcome" route
 
 import programs from "./modules/api/programs";
-import sayActions from "./modules/say/sayActions";
 import categoryActions from "./modules/category/categoryActions";
+import sayActions from "./modules/say/sayActions";
 
 router.get("/", sayActions.sayWelcome);
 router.get("/api/programs", programs.browse);
