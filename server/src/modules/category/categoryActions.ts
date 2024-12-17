@@ -1,5 +1,5 @@
 // Some data to make the trick
-
+import categoryRepository from "./categoryRepository";
 const categories = [
   {
     id: 1,
@@ -14,15 +14,9 @@ const categories = [
 import type { RequestHandler } from "express";
 
 // Declare the actions
-const categorie: RequestHandler = (req, res) => {
-  if (req.query.q != null) {
-    const filteredCategorie = categories.filter((categorie) =>
-      categorie.name.includes(req.query.q as string),
-    );
-    res.json(filteredCategorie);
-  } else {
-    res.json(categories);
-  }
+const browse: RequestHandler = async (req, res) => {
+  const categoriesFromDB = await categoryRepository.readAll();
+  res.json(categoriesFromDB);
 };
 
 const read: RequestHandler = (req, res) => {
@@ -41,6 +35,6 @@ const read: RequestHandler = (req, res) => {
 // Export them to import them somewhere else
 
 export default {
-  categorie,
+  browse,
   read,
 };
